@@ -9,6 +9,7 @@ use DB;
 
 class CateController extends Controller
 {
+
     public function getList()
     {
         $parent_name='';
@@ -25,7 +26,6 @@ class CateController extends Controller
     public function postAdd(Request $request)
     {
         if ($request->ajax()) {
-
             return response(Category::create($request->all()));
         }
     }
@@ -61,4 +61,5 @@ class CateController extends Controller
             notify("Bạn không thể xóa thể loại này", "getListCate");
         }
     }
+    
 }

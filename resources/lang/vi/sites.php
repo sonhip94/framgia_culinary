@@ -30,7 +30,7 @@
 		"hours" =>"giờ",
 		"second" =>"giây",
 		"ago" =>"trước",
-		'cate_ingre' => "Nguyên liệu",
+		'ingredient' => "Nguyên liệu",
 		"list"=>"Danh sách",
 		"add"=>"Thêm",
 		"foody"=>"Món ăn",
@@ -103,13 +103,19 @@
 		'youHaveAccount' => 'Bạn đã có tài khoản?',
 		'confirmPassword' => 'Xác nhận mật khẩu',
 		'password' => 'Mật khẩu',
-		'category' => 'Thể loại',
+		'category' => 'danh mục',
 		'notify'=>"Thông báo",
 		'fanpage' =>'Fanpage của Framgia Culinary',
 		'instagram' =>'Instagram của Framgia Culinary',
 		'youtube' =>'Youtube Video của Framgia Culinary',
 		'appMobile'=>'Ứng dụng nấu ăn ngon của Framgia Culinary',
 		'remember' => 'Nhớ tài khoản',
-		'email' => 'Email'
+		'email' => 'Email',
+		'cate_ingre' => 'Danh mục nguyên liệu',
+		'cate_foody'=>'Danh mục món ăn',
+		'close' => 'Đóng',
+		'nameCate' =>"Tên danh mục",
+		'chooseParent' =>'Chọn danh mục cha',
+		'none' =>"none"
 	];
 	
