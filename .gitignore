@@ -14,3 +14,7 @@ npm-debug.log
 /public/admin
 /public/users
 /public/bower_components
+composer.lock
+/public/vendor
+/public/framgia_culinary
+/resources/upload

@@ -7,17 +7,31 @@ use App\Models\Ingredient;
 
 class Category extends Model
 {
-    
+
     protected $fillable = [
         'name',
         'parent_id',
         'description',
         'status'
     ];
-    
+
     public function ingredients()
     {
-    	return $this->hasMany(Ingredient::class);
+        return $this->hasMany(Ingredient::class);
     }
-    
+
+    public function scopeGetID($query, $id)
+    {
+        return $query->find($id);
+    }
+
+    public function scopeGetAll($query, $array = '')
+    {
+        return $query->select($array);
+    }
+
+    public function scopeParentID($query, $parent_id)
+    {
+        return $query->where("parent_id", $parent_id);
+    }
 }

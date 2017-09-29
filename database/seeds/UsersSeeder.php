@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,20 +17,20 @@ class UsersTableSeeder extends Seeder
                     'email'         => 'admin@gmail.com',
                     'name'          => 'admin',
                     'password'      => bcrypt('123456'),
+                    'level_id'         => '1',
                     'phone'         => '01232085432',
-                    'address'       => 'Ha Dong - Ha Noi',
-                    'level_id'		=> '1',
-                    'status'        => '1',
+                    'address'       => 'Ha Dong',
+                    'status' 		=> '1'
                 ],
 
                 [
                     'email'         => 'son@gmail.com',
                     'name'          => 'son',
                     'password'      => bcrypt('123456'),
-                    'phone'         => '01232085432',
-                    'address'       => 'Ha Dong - Ha Noi',
-                    'level_id'		=> '2',
-                    'status'        => '2',
+                    'level_id'      => '2',
+                    'phone'         => '113',
+                    'address'       => 'Van Khe',
+                    'status' 		=> '1'
                 ]
             ]
         );

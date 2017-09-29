@@ -12,12 +12,29 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.pages.home');
+});
+Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+//////////
+Route::get('/logout', 'Auth\LoginController@getLogout');
+Route::get('social/redirect', 'Auth\SocialController@redirectToProvider');
+Route::get('social/callback', 'Auth\SocialController@handleProviderCallback');
+
+//test
+Route::get("abc", function () {
+    return view("users.pages.tao-cong-thuc");
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get("/abc",function(){ 
-	return view("users.pages.thanh-vien");
+//Admin
+Route::group(["prefix" => "admin", "middleware" => 'auth'], function () {
+    Route::get("dashboard", [
+        'uses' => 'Admin\DashboardController@getList'
+    ])->name("dashboard");
+    Route::group(["prefix" => "cate"], function () {
+        Route::get("list", ["uses" => 'Admin\CateController@getList'])->name("getListCate");
+        Route::post("add", ["uses" => "Admin\CateController@postAdd"])->name("postAddCate");
+        Route::post("edit", ["uses" => "Admin\CateController@postEdit"])->name("postEditCate");
+        Route::get("delete/{id}", ["uses" => "Admin\CateController@getDelete"])->name("getDeleteCate");
+    });
 });

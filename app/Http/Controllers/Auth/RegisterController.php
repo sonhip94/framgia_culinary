@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -42,22 +42,34 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
+        $message = array(
+            'name.required' => 'Không được để trống',
+            'name.max' =>"Email tối đa 255 kí tự",
+            'name.min' =>"Email tối thiểu 20 kí tự",
+            'confirmPassword.same' => "Mật khẩu nhập lại không đúng",
+            'password.min' => 'Mật khẩu trên 6 kí tự',
+            'email.required' => 'Không được để trống email',
+            'email.email' => "Không nhập đúng định dạng email",
+            'password.required' => 'Không được để trống Mật khẩu',
+            'confirmPassword.required' => "Không được để trống Xác nhấn mật khẩu"
+        );
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:20',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+            'password' => 'required|string|min:6',
+            'confirmPassword' => 'required'
+        ], $message);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -66,6 +78,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'remember_token' => $data['_token'],
+            'level_id' => (isset($data['level_id']) ? $data['level_id'] : 2),
+            'status' => (isset($data['status']) ? $data['status'] : 1),
+            'avatar' => '/image/user.png'
         ]);
     }
 }
