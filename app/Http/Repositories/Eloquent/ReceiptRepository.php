@@ -85,7 +85,6 @@ class ReceiptRepository extends Repository implements ReceiptRepositoryInterface
     {
         return $this->model
             ->where('name', 'LIKE', $keyword)
-            ->orWhere('description', 'LIKE', $keyword)
             ->where('status', config('const.Active'))
             ->paginate(16)->setPath("");
     }
@@ -94,7 +93,6 @@ class ReceiptRepository extends Repository implements ReceiptRepositoryInterface
     {
         return $this->model->select('id','name', 'image')
             ->where('name', 'LIKE', $keyword)
-            ->orWhere('description', 'LIKE', $keyword)
             ->where('status', config('const.Active'))
             ->take(8)->OrderByDESC('id')->get();
     }

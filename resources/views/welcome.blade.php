@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{ Html::style('users/bundles/frameworkse6d1.css') }}
     {{ Html::style('users/bundles/core8273.css') }}
+    {{ Html::style('users/Content/community.css') }}
     {{ Html::style('users/bundles/home12f7.css') }}
     {{ Html::style('users/bundles/recipe8d28.css') }}
     {{ Html::style('bower_components/font-awesome/css/font-awesome.css') }}
@@ -34,6 +35,7 @@
     {{ Html::script('bower_components/alertify-js/build/alertify.js') }}
     {{ Html::script('users/bundles/base98f1.js') }}
     {{ Html::script('users/js/follow.js') }}
+    {{ Html::script('users/js/requestReceipt.js') }}
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script>
         $(document).ready(function () {

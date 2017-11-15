@@ -26,7 +26,7 @@ class FollowController extends Controller
 
         if (!isset($follow->id)) {
             $response = $this->followRepository->createFollow($request);
-            event(new Followed($response->userFollow->name));
+            event(new Followed($response->following_id,$response->follower_id,$response->userFollow->name));
             return response($response);
         }
         $follow->delete();

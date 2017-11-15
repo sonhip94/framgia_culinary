@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class Followed implements ShouldBroadcast
+class NotifyRequest implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,15 +19,13 @@ class Followed implements ShouldBroadcast
      *
      * @return void
      */
-    public $follower_name;
-    public $following_id;
-    public $follower_id;
+    public $request_user_name;
+    public $request_id;
 
-    public function __construct($following_id,$follower_id, $follower_name)
+    public function __construct($request_id, $request_user_name)
     {
-        $this->follower_name = $follower_name;
-        $this->following_id = $following_id;
-        $this->follower_id = $follower_id;
+        $this->request_user_name = $request_user_name;
+        $this->request_id = $request_id;
     }
 
     /**
@@ -37,6 +35,6 @@ class Followed implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('follow-chanel');
+        return new Channel('request-notify');
     }
 }

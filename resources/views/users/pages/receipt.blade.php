@@ -1,6 +1,10 @@
 @extends("welcome")
 
 @section("content")
+@section('style')
+    {{ Html::style('users/css/default.css') }}
+    {{ Html::style('users/css/style.css') }}
+@endsection
     <div class="container full-container" id="server-view">
         <div>
             <div class="result-box">
@@ -10,18 +14,66 @@
                             <div class="result-container">
                                 <h1>{{ trans("sites.receiptAll") }}</h1>
                                 <div class="desc">
-                                    <strong class="text-highlight">{{ $countReceiptAll }}</strong>
+                                    <strong class="text-highlight">{{ $receiptAll->count() }}</strong>
                                     {{ trans("sites.receipt") }}
                                     <span class="text-red text-bold">""</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="cooky-filter">
 
+                    
+                    <div class="tab_container">
+                        
+                        <!-- <input id="tab1" type="radio" name="tabs" checked>
+                        <label for="tab1"><span>Chuyên mục</span></label>
+
+                        <input id="tab2" type="radio" name="tabs">
+                        <label for="tab2"><span>Nguyên liệu</span></label> -->
+                        <form action="{{ route('sort') }}" method="get" class="form">
+                        <div class="sort">
+                            <select id="sltSort" name='sltSort' style="float:right;width: 10%;height: 100%;" class='form-control' onchange="this.form.submit()">
+                                <option value='desc' @if(isset($value) && $value=='desc') selected @endif>Gần nhất</option>
+                                <option value='asc' @if(isset($value) && $value=='asc') selected @endif>Lâu hơn</option>
+                            </select>
+                            <noscript><input type="submit" value="Submit"></noscript>
+                        </div>
+                    </form>
+                    
+                        <!-- <section id="content1" class="tab-content">
+                            <form action="{{ route('filter') }}" method="get" class="form">
+                            @if(isset($foodies))
+                                @foreach($foodies as $key => $item)
+                                        @foreach($item->childs as $key => $item2)
+                                        <div class='col-md-2'>
+                                            <input type='checkbox' name='checkBox1' onchange="this.form.submit()" value='{{ $item2->id }}'/>{{ $item2->name }}
+                                        </div>
+                                        @endforeach
+                                        @if(++$key % 6 == 0)
+                                        <div class="clearfix"></div>
+                                        @endif
+                                        <div class="clearfix"></div>
+                                @endforeach
+                            @endif
+                        </form>
+                        </section>
+
+                        <section id="content2" class="tab-content">
+                            <form action="{{ route('filter') }}" method="get" class="form">
+                           @foreach($categories as $key => $item)
+                                <div class='col-md-2'>
+                                <input type='checkbox' name='checkBox2' onchange="this.form.submit()" value='{{ $item->id }}'/>{{ $item->name }}
+                            </div>
+                            @if(++$key % 6 == 0)
+                                <div class="clearfix"></div>
+                                @endif
+                            @endforeach
+                        </form>
+                        </section> -->
                     </div>
+                    <div class="clearfix"></div>
                     <div class="result-list recipe-list row10">
-                        @foreach($receiptAll as $item)
+                        @foreach($receiptAll as $key => $item)
                             <div class="result-recipe-wrapper">
                                 <div class="result-recipe-item">
                                     <div class="item-inner">
@@ -91,6 +143,10 @@
                                     </div>
                                 </div>
                             </div>
+
+                @if(++$key % 4 == 0)
+                    <div class='clearfix'></div>
+                @endif
                         @endforeach
                     </div>
                 </div>
@@ -98,4 +154,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    {{ Html::script('users/js/receipt.js') }}
 @endsection

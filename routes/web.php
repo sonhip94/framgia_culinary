@@ -153,7 +153,19 @@ Route::group(["prefix" => "receipt"], function () {
     Route::get("/topEvaluate", ['uses' => 'Users\ReceiptController@topEvaluate'])->name("topEvaluate");
     Route::get("/search", ['uses' => 'Users\ReceiptController@search'])->name("search");
     Route::get("/foody/{idFoody}",['uses'=>'Users\ReceiptController@foody'])->name("foody");
+    Route::get('/sort',['uses'=>'Users\ReceiptController@sort'])->name('sort');
+    Route::get('/filter',['uses'=>'Users\ReceiptController@filter'])->name('filter');
     Route::get("/ingredient/{idIngredient}",['uses'=>'Users\ReceiptController@ingredient'])->name("ingredient");
+});
+
+Route::group(['prefix'=>'request-receipt'],function(){
+    Route::get('/',['uses'=>'Users\RequestReceiptController@index'])->name('requestReceipt');
+    Route::post('/',['uses' => 'Users\RequestReceiptController@create']);
+    Route::get('/detail/{id}',['uses'=>'Users\RequestReceiptController@show'])->name('showRequest');
+    Route::post('/detail/{id}/livechat',['uses'=>'Users\RequestReceiptController@liveChat'])->name('liveChat');
+    Route::post('/detail/{id}/chatPrivate',['uses'=>'Users\RequestReceiptController@chatPrivate'])->name('chatPrivate');
+    Route::post('/detail/{id}/getReceiveId',['uses'=>'Users\RequestReceiptController@getReceiveId'])->name('getReceiveId');
+    Route::get('/all-requests/',['uses'=>'Users\RequestReceiptController@listRequest'])->name('listRequest');
 });
 
 Route::group(["prefix" => "member"], function () {
@@ -178,4 +190,3 @@ Route::get('test', function() {
     })->get();
     dd($receipts);
 });
-

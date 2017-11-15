@@ -28,6 +28,6 @@ $(document).ready(function () {
      var chanel = pusher.subscribe('follow-chanel');
      chanel.bind('App\\Events\\Followed', function(data) {
          var follower_name = data.follower_name;
-         $('.notify-widget').html(data.follower_name + ' theo dõi');
+         $('.'+data.following_id).html('<a href="'+document.location.origin+'/myprofile/'+data.follower_id+'">'+data.follower_name + '</a> theo dõi');
      });
 });

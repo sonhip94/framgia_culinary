@@ -3,7 +3,7 @@
         <h2>{{ trans("sites.topEvaluateBigger") }}</h2>
     </div>
     <div class="result-list recipe-list row10">
-                        @foreach($_top8 as $item)
+                        @foreach($_top8 as $key => $item)
                             <div class="result-recipe-wrapper">
                                 <div class="result-recipe-item">
                                     <div class="item-inner">
@@ -73,6 +73,10 @@
                                     </div>
                                 </div>
                             </div>
+
+                    @if(++$key % 4 == 0)
+                        <div class='clearfix'></div>
+                    @endif
                         @endforeach
                     </div>
     <a href="{{ route('topEvaluate') }}" class="view-more-btn"><span class="fa fa-hand-o-right text-highlight"></span> {{ trans("sites.see_more")

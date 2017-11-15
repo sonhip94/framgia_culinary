@@ -18,12 +18,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cooky-filter">
-
-                    </div>
                     <div class="result-list recipe-list row10">
                         @if($foody != null)
-                            @foreach($foody->receiptFoodies as $item)
+                            @foreach($foody->receiptFoodies as $key => $item)
                                 <div class="result-recipe-wrapper">
                                     <div class="result-recipe-item">
                                         <div class="item-inner">
@@ -81,6 +78,10 @@
                                         </div>
                                     </div>
                                 </div>
+
+                @if(++$key % 4 == 0)
+                    <div class='clearfix'></div>
+                @endif
                             @endforeach
                             @else {{ trans("sites.none") }}
                             @endif

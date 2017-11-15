@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class Followed implements ShouldBroadcast
+class ChatPrivate implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,15 +19,17 @@ class Followed implements ShouldBroadcast
      *
      * @return void
      */
-    public $follower_name;
-    public $following_id;
-    public $follower_id;
-
-    public function __construct($following_id,$follower_id, $follower_name)
-    {
-        $this->follower_name = $follower_name;
-        $this->following_id = $following_id;
-        $this->follower_id = $follower_id;
+    public $privateMessage;
+    public $receive_id;
+    public $privateChanel;
+    public $name;
+    
+    public function __construct($privateMessage,$name, $receive_id, $privateChanel)
+    { 
+        $this->privateChanel = $privateChanel;
+        $this->privateMessage = $privateMessage;
+        $this->receive_id = $receive_id;
+        $this->name = $name;
     }
 
     /**
@@ -37,6 +39,6 @@ class Followed implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('follow-chanel');
+        return new Channel('chat-private'.$this->privateChanel);
     }
 }

@@ -12,19 +12,16 @@
 								<strong class="text-highlight">{{ trans("sites.ingredient") }}:</strong>
 								{{ $category->name }}
 								<br>
-								<strong class="text-highlight">{{ count($category->ingredients) }}</strong>
+								<strong class="text-highlight"></strong>
 								{{ trans("sites.receipt") }}
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="cooky-filter">
-
-				</div>
 
 				<div class="result-list recipe-list row10">
 					@foreach($category->ingredients as $item)
-						@foreach($item->receiptIngredients as $item2)
+						@foreach($item->receiptIngredients as $key => $item2)
 						<div class="result-recipe-wrapper">
 							<div class="result-recipe-item">
 								<div class="item-inner">
@@ -82,6 +79,9 @@
 									</div>
 								</div>
 							</div>
+			                @if(++$key % 4 == 0)
+			                    <div class='clearfix'></div>
+			                @endif
 							@endforeach
 						@endforeach
 					</div>

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ReceiptRepositoryInterface;
 use App\Repositories\Contracts\FoodyRepositoryInterface;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Models\Receipt;
+
 class ReceiptController extends Controller
 {
     private $receiptRepository;
@@ -27,8 +29,7 @@ class ReceiptController extends Controller
     public function index()
     {
         $receiptAll = $this->receiptRepository->getAllReceipt([], '*', [1], 16);
-        $countReceiptAll = $receiptAll->count();
-        return view("users.pages.receipt", compact("receiptAll", "countReceiptAll"));
+        return view("users.pages.receipt", compact("receiptAll"));
     }
 
     public function search(Request $request)
@@ -39,9 +40,36 @@ class ReceiptController extends Controller
         $pagination = $value->appends(array(
             "keyword" => $request->input("keyword")
         ));
+
         $countValue = $value->count();
         return view("users.pages.search", compact("value", "pagination", "word", "countValue"));
     }
+
+    public function sort(Request $request)
+    {
+        $value = $request->input("sltSort");
+
+        if($value == 'asc'){
+            $receiptAll = $this->receiptRepository->getAllReceipt([], '*', [1], 16);
+            return view('users.pages.receipt',compact('receiptAll','value'));
+        }
+        else if($value == 'desc'){
+         $receiptAll=Receipt::orderBy('id','DESC')->where('status',1)->paginate(16);
+         return view('users.pages.receipt',compact('receiptAll','value'));
+        }
+         
+    }
+
+    // public function filter(Request $request)
+    // {
+    //     $value = $request->input("checkBox1");
+    //     $value2 = $request->input('checkBox2');
+
+    //     $receiptAll=Receipt::orderBy('id','DESC')->where('status',1)->paginate(16);
+    //     return view('users.pages.receipt',compact('receiptAll','value'));
+
+        
+    // }
 
     public function foody($id)
     {

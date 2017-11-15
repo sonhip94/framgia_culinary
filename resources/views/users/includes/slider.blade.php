@@ -1,12 +1,14 @@
 <div class="container">
     <div class="top-today-recipes">
-        @foreach($slider as $item)
-            <div class="today-recipe">
-                <a target="_blank" class="item" href="{{ route('detail',$item->id) }}">
-                    <img src="{{ asset('upload/images/'.$item->image) }}">
-                </a>
-            </div>
-        @endforeach
+        @if($slider)
+            @foreach($slider as $item)
+                <div class="today-recipe">
+                    <a target="_blank" class="item" href="{{ route('detail',$item->id) }}">
+                        <img src="{{ asset('upload/images/'.$item->image) }}">
+                    </a>
+                </div>
+            @endforeach
+        @endif
     </div>
     <div class="search_slider" style="width:100%;position:absolute;top:50px">
         <div class="search_slider2" style="max-width:800px;margin:0 15%">
@@ -21,12 +23,9 @@
             </div>
             <div class="trending-link">
                 <ul>
-                    <li><a href="#" target=_blank>B&#225;nh m&#236; nướng muối ớt </a>
-                    <li><a href="#" target=_blank>H&#225; cảo</a>
-                    <li><a href="#" target=_blank>Milo Cube</a>
-                    <li><a href="#" target=_blank>mật ong chưng tắc</a>
-                    <li><a href="#" target=_blank>M&#243;n chay</a>
-                    <li><a href="#" target=_blank>Đ&#224;o ng&#226;m</a>
+                    @foreach($slider as $item)
+                        <li><a href="{{ route('detail', $item->id) }}" target=_blank>{{ $item->name }} </a>
+                    @endforeach
                 </ul>
             </div>
         </div>

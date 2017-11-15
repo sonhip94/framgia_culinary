@@ -17,9 +17,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cooky-filter">
-
-                    </div>
                     <div class="result-list recipe-list row10">
                         @foreach($value as $item)
                             <div class="result-recipe-wrapper">

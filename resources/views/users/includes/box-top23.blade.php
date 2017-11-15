@@ -4,7 +4,7 @@
     </div>
     <div class="row recipes-list row10">
         <div class="top-recipes-user">
-            @foreach($_6newReceipt as $item)
+            @foreach($_6newReceipt as $key => $item)
                 <div class="today-recipe-user">
                     <div class="item-block recipe-block">
                         <div class="item-content">

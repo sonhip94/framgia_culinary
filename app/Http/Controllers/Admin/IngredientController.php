@@ -26,7 +26,7 @@ class IngredientController extends Controller
     public function getList()
     {
         $categories = $this->categoryRepository->all()->toArray();
-        $ingredients = $this->ingredientRepository->all();
+        $ingredients = Ingredient::orderBy('id', 'DESC')->get();
         return view('admin.ingredient.ingredient_list', compact('categories', 'ingredients'));
     }
 

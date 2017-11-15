@@ -484,6 +484,5 @@
     {{ Html::script("users/js/clone.js") }}
     {{ Html::script("users/js/fork.js") }}
     {{ Html::script("users/js/like.js") }}
-    {{ Html::script("users/js/follow.js") }}
     {{ Html::script("users/js/detail.js") }}
 @endsection

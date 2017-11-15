@@ -2,18 +2,41 @@
     <div class="root-nav">
         <div class="container" id="slider-head">
             <ul class="list-inline">
-                <li class="active"><a href="{{ route('home') }}">{{ trans("sites.receipt_cook") }}</a>
+                <li class="active">
+                    <a href="{{ route('home') }}">{{ trans("sites.receipt_cook") }}</a>
                     @if(!Auth::check())
-                    <li><a href="{{ route('login') }}">
-                        <span class="fa fa-sign-in"></span>
-                        {{ trans("sites.login") }}
-                    </a>
+                    <li>
+                        <a href="{{ route('login') }}">
+                            <span class="fa fa-sign-in"></span>
+                            {{ trans("sites.login") }}
+                        </a>
+                    </li>
                     @else
-                    <li><a href="{{ route('logout') }}">
-                        <span class="fa fa-sign-in"></span>
-                        {{ trans("sites.logout") }}
-                    </a>
+                    <li>
+                        <a href="{{ route('logout') }}">
+                            <span class="fa fa-sign-in"></span>
+                            {{ trans("sites.logout") }}
+                        </a>
+                    </li>
                     @endif
+
+                    @if(!Auth::check())
+                    <li>
+                        <a href="{{ route('login') }}">
+                            <span class="fa fa-paper-plane"></span>
+                            Gửi yêu cầu
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{ route('requestReceipt') }}">
+                            <span class="fa fa-paper-plane"></span>
+                            Gửi yêu cầu
+                        </a>
+                    </li>
+                    @endif
+
+                </li>
                </ul>
            </div>
        </div>
@@ -160,6 +183,7 @@
                             </nav>
 
                         </li>
+                        <li><a href="{{ route('listRequest') }}">{{ trans("sites.listRequest") }}</a></li>
                     </ul>
                     <ul class="nomargin list-inline right-wrap navbar-right">
                         <li>
@@ -242,7 +266,7 @@
                                 <span class="fa fa-bell text-highlight"></span>
                                 <span class="sr-only">{{ trans('sites.notify') }}</span>
                             </a>
-                            <div class="dropdown-menu notify-widget" role="menu">
+                            <div class="dropdown-menu notify-widget {{Auth::user()->id}}" role="menu">
                                 {{ trans('sites.notify') }} {{ trans('sites.here') }}
                             </div>
                         </li>

@@ -13,6 +13,7 @@ use App\Models\Receipt;
 use App\Models\UserReceipt;
 use App\Models\Level;
 use App\Models\Like;
+use App\Models\RequestReceipt;
 
 class User extends Authenticatable
 {
@@ -93,6 +94,11 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function requestReceipts()
+    {
+        return $this->hasMany(RequestReceipt::class);
     }
 
     public function level()

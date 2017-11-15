@@ -136,8 +136,8 @@ return [
     'approved' => "Đã duyệt",
     'update' => 'Cập nhật',
     'forked' => 'Forked',
-    'createSuccess' => "Tạo công thức thành công",
-    "createFail" => 'Tạo công thức thất bại',
+    'createSuccess' => "Đăng công thức thành công",
+    "createFail" => 'Đăng công thức thất bại',
     'deleteFail' => 'Chưa có công thức nào khởi tạo',
     'content' => 'Nội dung',
     'createReceipt' => 'Đăng công thức',
@@ -205,6 +205,11 @@ return [
     'rank' => 'Cấp bậc',
     'newbie' => 'Newbie',
     'professinal' => 'Professinal',
-    'masterChef' => 'MasterChef'
+    'masterChef' => 'MasterChef',
+    'submitRequest' => 'Gửi yêu cầu',
+    'createReceipt' => ' Đăng công thức',
+    'inform' => 'Nhập thông tin',
+    'chatRoom' => 'Live chat room',
+    'listRequest' => 'Danh sách yêu cầu'
 
 ];

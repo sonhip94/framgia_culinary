@@ -1,0 +1,65 @@
+.mess-by-me{
+    background: #EEEEEE;
+    float:right;
+}
+.mess-by-you{
+    background: #6699CC;
+    float:left;
+}
+.show-all-messages li, .show-message li{
+    list-style: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.text-gray{
+    font-size:24px; border:none;background: white;
+}
+.private-chat{
+    width:60%;height: 300px;border:solid 1px;
+}
+.content{
+    white-space: pre-line;padding-bottom: 10px;margin-top: -30px;margin-left
+}
+.chat{
+    background: white;width: 100%;height: 300px;overflow: scroll;overflow-x: hidden;overflow-y: hidden
+}
+#input-message{
+    width: 100%;height: 100px;resize: none;
+}
+.pri-message{
+    float:left;width: 60%;height: 100px;resize: none;
+}
